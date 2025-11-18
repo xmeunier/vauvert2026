@@ -55,7 +55,7 @@ $config = json_decode(file_get_contents('config.json'), true);
             
             <div style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 40px;">
                 <div class="qr-code">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://votre-lien-questionnaire.fr" alt="QR Code questionnaire">
+                    <img src="<?php echo $config['liens']['qrcode']; ?>" alt="QR Code questionnaire">
                     <p style="margin-top: 10px; font-weight: bold;">Scannez le QR code</p>
                 </div>
                 
