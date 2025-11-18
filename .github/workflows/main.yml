@@ -25,5 +25,7 @@ jobs:
           server-dir: /
           # On exclut tout sauf config.json
           exclude: |
-            **/*
-            !config.json
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/.github/**
