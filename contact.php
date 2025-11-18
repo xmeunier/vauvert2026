@@ -167,7 +167,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 Rencontrez notre équipe lors de nos permanences
             </p>
             <p style="color: #FF2E7E; font-weight: bold; font-size: 1.1em;">
-                Tous les samedis de 10h à 12h<br>
+                <?php echo $config['permanence']['horaires']; ?><br>
                 À la permanence de campagne - <?php echo $config['permanence']['adresse']; ?>
             </p>
         </div>
