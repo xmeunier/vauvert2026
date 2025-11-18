@@ -22,7 +22,7 @@ jobs:
           port: 21
           # On envoie uniquement config.json
           local-dir: ./
-          server-dir: /public_html/
+          server-dir: /
           # On exclut tout sauf config.json
           exclude: |
             **/*
