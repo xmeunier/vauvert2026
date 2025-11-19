@@ -1,4 +1,4 @@
-name: Rename File via FTP
+name: switch to/from maintenance mode
 
 on:
   workflow_dispatch:
@@ -17,35 +17,16 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-      
-      - name: Install lftp
-        run: sudo apt-get update && sudo apt-get install -y lftp
-      
-      - name: Rename file via FTP
-        env:
-          FTP_SERVER: ${{ secrets.FTP_SERVER }}
-          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
-          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-          OLD_FILE: ${{ github.event.inputs.old_filename }}
-          NEW_FILE: ${{ github.event.inputs.new_filename }}
-        run: |
-          lftp -c "
-            open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_SERVER
-            mv $OLD_FILE $NEW_FILE
-            bye
-          "
-      
-      - name: Verify rename
-        env:
-          FTP_SERVER: ${{ secrets.FTP_SERVER }}
-          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
-          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-          NEW_FILE: ${{ github.event.inputs.new_filename }}
-        run: |
-          lftp -c "
-            open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_SERVER
-            ls $NEW_FILE
-            bye
-          "
+      - name: Rename file via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            echo "Renaming file..."
+            mv "${{ github.event.inputs.old_filename }}" "${{ github.event.inputs.new_filename }}"
+            echo "File renamed successfully!"
+            echo "Verifying new file exists..."
+            ls -lh "${{ github.event.inputs.new_filename }}"
