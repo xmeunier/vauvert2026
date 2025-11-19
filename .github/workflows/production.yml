@@ -3,14 +3,6 @@ name: File Operations via SSH
 on:
   workflow_dispatch:
     inputs:
-      operation:
-        description: 'Operation to perform'
-        required: true
-        type: choice
-        options:
-          - rename
-          - copy
-          - delete
       source_file:
         description: 'Source filename'
         required: true
@@ -31,20 +23,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            case "${{ github.event.inputs.operation }}" in
-              rename)
                 echo "Renaming file..."
                 mv "${{ github.event.inputs.source_file }}" "${{ github.event.inputs.destination_file }}"
                 echo "✓ Renamed to: ${{ github.event.inputs.destination_file }}"
-                ;;
-              copy)
-                echo "Copying file..."
-                cp "${{ github.event.inputs.source_file }}" "${{ github.event.inputs.destination_file }}"
-                echo "✓ Copied to: ${{ github.event.inputs.destination_file }}"
-                ;;
-              delete)
-                echo "Deleting file..."
-                rm "${{ github.event.inputs.source_file }}"
-                echo "✓ Deleted: ${{ github.event.inputs.source_file }}"
-                ;;
-            esac
+
