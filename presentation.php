@@ -36,19 +36,27 @@ $config = json_decode(file_get_contents('config.json'), true);
         </p>
 
         <div class="team-grid">
-          <?php foreach($config['equipe'] as $membre): ?>
-          <div class="team-member">
-            <img src="<?php echo $membre['photo']; ?>" 
-               alt="<?php echo $membre['prenom'] . ' ' . $membre['nom']; ?>">
-              <div class="team-member-info">
-                <h4><?php echo $membre['prenom'] . ' ' . $membre['nom']; ?></h4>
-                <p style="color: #FF2E7E; font-weight: bold;">
-                  <?php echo $membre['delegation']; ?>
-                </p>
-                <p><?php echo $membre['description']; ?></p>
-              </div>
+          <?php if(empty($config['equipe'])): ?>
+            <div style="text-align: center; padding: 60px 20px; width: 100%;">
+              <i class="fas fa-users" style="font-size: 4em; color: #008AAD; margin-bottom: 20px;"></i>
+              <h3 style="color: #008AAD; font-size: 1.8em;">À venir</h3>
+              <p style="color: #666; font-size: 1.1em; margin-top: 10px;">La composition de l'équipe sera bientôt dévoilée</p>
             </div>
-          <?php endforeach; ?>
+          <?php else: ?>
+            <?php foreach($config['equipe'] as $membre): ?>
+            <div class="team-member">
+              <img src="<?php echo $membre['photo']; ?>"
+                 alt="<?php echo $membre['prenom'] . ' ' . $membre['nom']; ?>">
+                <div class="team-member-info">
+                  <h4><?php echo $membre['prenom'] . ' ' . $membre['nom']; ?></h4>
+                  <p style="color: #FF2E7E; font-weight: bold;">
+                    <?php echo $membre['delegation']; ?>
+                  </p>
+                  <p><?php echo $membre['description']; ?></p>
+                </div>
+              </div>
+            <?php endforeach; ?>
+          <?php endif; ?>
         </div>
 
         <div style="background: linear-gradient(135deg, #FFD500 0%, #FFE44D 100%); padding: 40px; border-radius: 15px; text-align: center; margin-top: 60px;">
