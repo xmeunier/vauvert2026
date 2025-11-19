@@ -1,29 +1,53 @@
-name: File Operations via SSH
+name: Rename File via SSH (with Passphrase)
 
 on:
   workflow_dispatch:
     inputs:
-      source_file:
-        description: 'Source filename'
+      old_filename:
+        description: 'Current filename (with path)'
         required: true
-      destination_file:
-        description: 'Destination filename (for rename/copy)'
-        required: false
+        default: 'public_html/index.php'
+      new_filename:
+        description: 'New filename (with path)'
+        required: true
+        default: 'public_html/v2.php'
 
 jobs:
-  file-operation:
+  rename-file:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Execute file operation via SSH
+      - name: Rename file via SSH (passphrase-protected key)
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          passphrase: ${{ secrets.SSH_PASSPHRASE }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-                echo "Renaming file..."
-                mv "${{ github.event.inputs.source_file }}" "${{ github.event.inputs.destination_file }}"
-                echo "✓ Renamed to: ${{ github.event.inputs.destination_file }}"
-
+            echo "Current working directory: $(pwd)"
+            echo "Attempting to rename file..."
+            echo "From: ${{ github.event.inputs.old_filename }}"
+            echo "To: ${{ github.event.inputs.new_filename }}"
+            
+            # Check if source file exists
+            if [ -f "${{ github.event.inputs.old_filename }}" ]; then
+              # Rename the file
+              mv "${{ github.event.inputs.old_filename }}" "${{ github.event.inputs.new_filename }}"
+              
+              # Verify the rename was successful
+              if [ -f "${{ github.event.inputs.new_filename }}" ]; then
+                echo "✓ File renamed successfully!"
+                echo "New file details:"
+                ls -lh "${{ github.event.inputs.new_filename }}"
+              else
+                echo "✗ Error: Rename failed - new file not found"
+                exit 1
+              fi
+            else
+              echo "✗ Error: Source file '${{ github.event.inputs.old_filename }}' does not exist"
+              echo "Listing current directory contents:"
+              ls -la
+              exit 1
+            fi
