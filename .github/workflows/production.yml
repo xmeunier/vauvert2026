@@ -1,32 +1,50 @@
-name: switch to/from maintenance mode
+name: File Operations via SSH
 
 on:
   workflow_dispatch:
     inputs:
-      old_filename:
-        description: 'Maintenance: index.php / Mise en service: v2.php'
+      operation:
+        description: 'Operation to perform'
         required: true
-        default: 'index.php'
-      new_filename:
-        description: 'Maintenance: v2.php / Mise en service: index.php'
+        type: choice
+        options:
+          - rename
+          - copy
+          - delete
+      source_file:
+        description: 'Source filename'
         required: true
-        default: 'v2.php'
+      destination_file:
+        description: 'Destination filename (for rename/copy)'
+        required: false
 
 jobs:
-  rename-file:
+  file-operation:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Rename file via SSH
+      - name: Execute file operation via SSH
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
-          password: ${{ secrets.SSH_PASSWORD }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            echo "Renaming file..."
-            mv "${{ github.event.inputs.old_filename }}" "${{ github.event.inputs.new_filename }}"
-            echo "File renamed successfully!"
-            echo "Verifying new file exists..."
-            ls -lh "${{ github.event.inputs.new_filename }}"
+            case "${{ github.event.inputs.operation }}" in
+              rename)
+                echo "Renaming file..."
+                mv "${{ github.event.inputs.source_file }}" "${{ github.event.inputs.destination_file }}"
+                echo "✓ Renamed to: ${{ github.event.inputs.destination_file }}"
+                ;;
+              copy)
+                echo "Copying file..."
+                cp "${{ github.event.inputs.source_file }}" "${{ github.event.inputs.destination_file }}"
+                echo "✓ Copied to: ${{ github.event.inputs.destination_file }}"
+                ;;
+              delete)
+                echo "Deleting file..."
+                rm "${{ github.event.inputs.source_file }}"
+                echo "✓ Deleted: ${{ github.event.inputs.source_file }}"
+                ;;
+            esac
