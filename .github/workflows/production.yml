@@ -1,0 +1,51 @@
+name: Rename File via FTP
+
+on:
+  workflow_dispatch:
+    inputs:
+      old_filename:
+        description: 'Maintenance: index.php / Mise en service: v2.php'
+        required: true
+        default: 'index.php'
+      new_filename:
+        description: 'Maintenance: v2.php / Mise en service: index.php'
+        required: true
+        default: 'v2.php'
+
+jobs:
+  rename-file:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      - name: Install lftp
+        run: sudo apt-get update && sudo apt-get install -y lftp
+      
+      - name: Rename file via FTP
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          OLD_FILE: ${{ github.event.inputs.old_filename }}
+          NEW_FILE: ${{ github.event.inputs.new_filename }}
+        run: |
+          lftp -c "
+            open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_SERVER
+            mv $OLD_FILE $NEW_FILE
+            bye
+          "
+      
+      - name: Verify rename
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          NEW_FILE: ${{ github.event.inputs.new_filename }}
+        run: |
+          lftp -c "
+            open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_SERVER
+            ls $NEW_FILE
+            bye
+          "
