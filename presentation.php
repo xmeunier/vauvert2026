@@ -40,7 +40,7 @@ $config = json_decode(file_get_contents('config.json'), true);
             <div style="text-align: center; padding: 60px 20px; width: 100%;">
               <i class="fas fa-users" style="font-size: 4em; color: #008AAD; margin-bottom: 20px;"></i>
               <h3 style="color: #008AAD; font-size: 1.8em;">À venir</h3>
-              <p style="color: #666; font-size: 1.1em; margin-top: 10px;">La composition de l'équipe sera bientôt dévoilée</p>
+              <p style="color: #666; font-size: 1.1em; margin-top: 10px;"><?php echo $config['messages']['0_membres_equipe']; ?></p>
             </div>
           <?php else: ?>
             <?php foreach($config['equipe'] as $membre): ?>
