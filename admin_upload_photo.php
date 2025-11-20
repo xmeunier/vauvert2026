@@ -126,7 +126,7 @@ $safeName = preg_replace('/[^a-zA-Z0-9_-]/', '_', $originalName);
 $safeName = substr($safeName, 0, 100); // Limiter la longueur
 
 // Ajouter un timestamp pour éviter les collisions
-$finalName = $safeName . '_' . time() . '.' . $extension;
+$finalName = $safeName . '.' . $extension;
 
 // Créer le dossier de destination s'il n'existe pas
 $uploadDir = __DIR__ . '/' . $config['upload']['upload_directory'];
