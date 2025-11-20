@@ -63,7 +63,7 @@ $config = json_decode(file_get_contents('config.json'), true);
                     <div style="text-align: center; margin-bottom: 20px;">
                         <i class="fas fa-clock" style="font-size: 3em; color: #5DD9C1;"></i>
                     </div>
-                    <h4 style="color: #008AAD; text-align: center; margin-bottom: 15px;">Date limite d'inscription</h4>
+                    <h4 style="color: #008AAD; text-align: center; margin-bottom: 15px;">Date limite d'inscription sur les listes électorales</h4>
                     <p style="text-align: center;">
                         <strong style="color: #FF2E7E; font-size: 1.2em;">6 février 2026</strong><br>
                         Ne manquez pas cette échéance !
