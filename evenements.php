@@ -22,8 +22,6 @@ $config = json_decode(file_get_contents('config.json'), true);
             Rencontrez-nous et participez à nos réunions
         </p>
 
-        <h3 style="color: #008AAD; margin-bottom: 30px; text-align: center;">Réunions de bilan</h3>
-
         <div class="events-grid">
     <?php foreach($config['reunions'] as $reunion): ?>
     <div class="event-card">
