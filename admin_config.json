@@ -1,10 +1,16 @@
 {
   "admin": {
     "username": "admin",
-    "password_hash": "$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi"
+    "password_hash": "$2y$10$hz/V0abUrBu1lfr5XfrAL.R11p3beYnHTx85651QTCnnMcEe75xhK"
   },
   "upload": {
-    "allowed_extensions": ["jpg", "jpeg", "png", "gif", "webp"],
+    "allowed_extensions": [
+      "jpg",
+      "jpeg",
+      "png",
+      "gif",
+      "webp"
+    ],
     "max_file_size": 5242880,
     "upload_directory": "photos"
   }
