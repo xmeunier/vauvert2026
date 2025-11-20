@@ -45,7 +45,7 @@ $config = json_decode(file_get_contents('config.json'), true);
                     <!-- Une ville à visage humain -->
                     <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; border-left: 4px solid #FF2E7E;">
                         <h5 style="color: #FF2E7E; font-size: 1.1em; margin-bottom: 10px;">Une ville à visage humain,</h5>
-                        <p style="font-size: 0.95em; line-height: 1.6;">qui se développe tout en préservant son identité, engagée dans la rénovation de l'habitat, au sein du quartier d'habitat social, sur l'ensemble de la commune et dans la mise en valeur de son patrimoine.</p>
+                        <p style="font-size: 0.95em; line-height: 1.6;">qui se développe tout en préservant son identité, engagée dans la rénovation de l'habitat, en centre ville, au sein du quartier d'habitat social, sur l'ensemble de la commune et dans la mise en valeur de son patrimoine.</p>
                     </div>
 
                     <!-- Une ville qui bouge -->
