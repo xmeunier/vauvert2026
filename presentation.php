@@ -25,7 +25,7 @@ $config = json_decode(file_get_contents('config.json'), true);
                     <h4><?php echo $config['candidat']['nom']; ?></h4>
                     <p style="color: #FF2E7E; font-weight: bold; margin-bottom: 10px;"><?php echo $config['candidat']['fonction']; ?></p>
                     <p><?php echo $config['candidat']['mot_du_candidat']; ?></p>
-                    <p style="margin-top: 15px; font-style: italic;">"Pour Vauvert, continuons d'agir ENSEMBLE vers un avenir meilleur."</p>
+                    <p style="margin-top: 15px; font-style: italic;"><?php echo $config['site']['nom']; ?></p>
                 </div>
             </div>
         </div>
