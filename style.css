@@ -622,6 +622,17 @@ footer .social-links {
     margin-top: 20px;
 }
 
+/* Encarts grid */
+.encarts-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .header-container {
@@ -647,6 +658,10 @@ footer .social-links {
     }
 
     .team-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .encarts-grid {
         grid-template-columns: 1fr;
     }
 

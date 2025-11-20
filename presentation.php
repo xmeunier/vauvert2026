@@ -25,8 +25,67 @@ $config = json_decode(file_get_contents('config.json'), true);
                     <h4><?php echo $config['candidat']['nom']; ?></h4>
                     <p style="color: #FF2E7E; font-weight: bold; margin-bottom: 10px;"><?php echo $config['candidat']['fonction']; ?></p>
                     <p><?php echo $config['candidat']['mot_du_candidat']; ?></p>
-                    <p style="margin-top: 15px; font-style: italic;"><?php echo $config['site']['nom']; ?></p>
+                    <p style="margin-top: 15px; font-style: italic;">"Pour Vauvert, continuons d'agir ENSEMBLE vers un avenir meilleur."</p>
                 </div>
+            </div>
+        </div>
+
+        <div style="max-width: 900px; margin: 60px auto; padding: 40px; background: white; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+            <h3 style="color: #008AAD; margin-bottom: 30px; text-align: center;">Lettre du candidat</h3>
+
+            <div style="line-height: 1.8; color: #333;">
+                <p style="margin-bottom: 15px;">Chères Vauverdoises,<br>
+                Chers Vauverdois,</p>
+
+                <p style="margin-bottom: 20px;"><em>En quelques années, Vauvert a beaucoup changé. Ce changement, c'est le fruit de l'engagement quotidien d'une équipe municipale qui a œuvré pour faire de notre ville un lieu où il fait bon vivre.</em></p>
+
+                <h4 style="color: #008AAD; margin: 30px 0 25px 0; text-align: center; font-size: 1.5em;">Nous avons agi pour faire de Vauvert :</h4>
+
+                <div class="encarts-grid">
+                    <!-- Une ville à visage humain -->
+                    <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; border-left: 4px solid #FF2E7E;">
+                        <h5 style="color: #FF2E7E; font-size: 1.1em; margin-bottom: 10px;">Une ville à visage humain,</h5>
+                        <p style="font-size: 0.95em; line-height: 1.6;">qui se développe tout en préservant son identité, engagée dans la rénovation de l'habitat, au sein du quartier d'habitat social, sur l'ensemble de la commune et dans la mise en valeur de son patrimoine.</p>
+                    </div>
+
+                    <!-- Une ville qui bouge -->
+                    <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; border-left: 4px solid #FF2E7E;">
+                        <h5 style="color: #FF2E7E; font-size: 1.1em; margin-bottom: 10px;">Une ville qui bouge,</h5>
+                        <p style="font-size: 0.95em; line-height: 1.6;">avec l'ouverture de commerces en centre ville, l'accueil de nouvelles entreprises sur la ZAC Côté Soleil, le pôle des Costières et l'implantation de nouveaux services et équipements de proximité.</p>
+                    </div>
+
+                    <!-- Une ville qui respire -->
+                    <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; border-left: 4px solid #FF2E7E;">
+                        <h5 style="color: #FF2E7E; font-size: 1.1em; margin-bottom: 10px;">Une ville qui respire,</h5>
+                        <p style="font-size: 0.95em; line-height: 1.6;">plus paisible, grâce à la création de parcs, d'aires de jeux, de chemins piétons et à un vaste plan voirie dans tous les quartiers.</p>
+                    </div>
+
+                    <!-- Une ville conviviale -->
+                    <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; border-left: 4px solid #FF2E7E;">
+                        <h5 style="color: #FF2E7E; font-size: 1.1em; margin-bottom: 10px;">Une ville conviviale</h5>
+                        <p style="font-size: 0.95em; line-height: 1.6;">solidaire qui soutient l'éducation, la vie associative et sportive, multiplie les occasions de rencontres et propose de nombreux rendez-vous culturels, taurins et festifs.</p>
+                    </div>
+                </div>
+
+                <p style="margin-bottom: 20px;">Tout cela a été mené en transparence, en favorisant la participation citoyenne et le dialogue avec vous lors de nos rencontres et opérations de terrain en "porte à porte".</p>
+
+                <p style="margin-bottom: 20px;">Alors que le mandat s'achève, nous souhaitons partager avec vous le bilan de notre action et échanger sur nos orientations pour l'avenir. Des ateliers seront organisés pour discuter ensemble de nos réussites, de vos attentes et de projets à venir.</p>
+
+                <p style="margin-bottom: 20px;">Car si beaucoup a été accompli, beaucoup reste à faire. Des chantiers sont en cours, de nouveaux projets prêts à démarrer, et nous portons des idées neuves pour répondre à l'évolution des besoins des Vauverdois.</p>
+
+                <p style="margin-bottom: 20px;">Voilà pourquoi, toujours animé par la passion de ma ville et la volonté de servir ses habitants, toujours prêt à être à la fois un maire du quotidien, de terrain, à l'écoute et porteur d'une vision d'avenir, j'ai décidé d'être candidat aux prochaines élections municipales.</p>
+
+                <div style="background: linear-gradient(135deg, #FFD500 0%, #FFE44D 100%); padding: 25px; border-radius: 10px; margin: 30px 0;">
+                    <p style="color: #008AAD; font-weight: bold; font-size: 1.1em; margin-bottom: 15px; text-align: center;">Autour de moi, je rassemble une équipe de femmes et d'hommes engagés et connus de vous, acteurs de la vie sociale et quotidien, réunis sous la bannière :</p>
+                    <div style="text-align: center;">
+                        <img src="vauvertEnsemble.png" alt="Pour Vauvert, continuons d'agir ENSEMBLE" style="max-width: 400px; width: 100%; height: auto;">
+                    </div>
+                </div>
+
+                <p style="margin-bottom: 15px;">Chères Vauverdoises, chers Vauverdois, les élections municipales sont un moment important.<br>
+                En mars 2026, il s'agira de Vauvert, et de Vauvert seulement.</p>
+
+                <p>Dans un contexte où les communes sont fragilisées, notre ville a besoin de stabilité, d'une équipe solide, solidaire et mobilisée, à votre écoute, capable de protéger et de faire grandir l'espoir d'une ère nouvelle, qu'elle a tracée, pour Vauvert.</p>
             </div>
         </div>
 
