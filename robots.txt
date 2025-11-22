@@ -1,0 +1,36 @@
+# Robots.txt pour Vauvert Ensemble
+# Ce fichier indique aux moteurs de recherche quelles pages indexer
+
+User-agent: *
+Allow: /
+
+# Bloquer les fichiers sensibles et d'administration
+Disallow: /admin_*
+Disallow: /create_*
+Disallow: /*.php$
+Disallow: /config.json
+Disallow: /admin_config.json
+Disallow: /.htaccess
+
+# Autoriser explicitement les pages publiques
+Allow: /index.php
+Allow: /presentation.php
+Allow: /evenements.php
+Allow: /contact.php
+Allow: /votez.php
+
+# Fichiers CSS et JS
+Allow: /style.css
+Allow: /*.css$
+Allow: /*.js$
+
+# Images et médias
+Allow: /photos/
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.png$
+Allow: /*.webp$
+Allow: /*.gif$
+
+# Sitemap
+Sitemap: https://vauvert2026.fr/sitemap.xml

@@ -1,0 +1,33 @@
+{
+  "name": "Pour Vauvert, continuons d'agir ENSEMBLE",
+  "short_name": "Vauvert Ensemble",
+  "description": "Site officiel de Jean DENAT pour les élections municipales de Vauvert 2026",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#5DD9C1",
+  "theme_color": "#5DD9C1",
+  "orientation": "portrait",
+  "lang": "fr",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "/favicon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["government", "politics"],
+  "screenshots": []
+}
