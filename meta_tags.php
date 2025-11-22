@@ -15,7 +15,7 @@
 // Valeurs par défaut si non définies
 $page_title = $page_title ?? 'Pour Vauvert, continuons d\'agir ENSEMBLE';
 $page_description = $page_description ?? 'Jean DENAT et son équipe présentent leur projet pour les élections municipales 2026. Découvrez nos engagements pour Vauvert.';
-$page_keywords = $page_keywords ?? 'Vauvert, élections municipales 2026, Jean DENAT, politique locale, Gard, campagne électorale, vivre ensemble, nouveau mandat';
+$page_keywords = $page_keywords ?? $config["technique"]["mots_cles"];
 $page_image = $page_image ?? 'https://vauvert2026.fr/vauvertEnsemble.png';
 $page_url = $page_url ?? 'https://vauvert2026.fr' . $_SERVER['REQUEST_URI'];
 $page_type = $page_type ?? 'website';
