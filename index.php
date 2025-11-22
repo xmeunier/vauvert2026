@@ -175,7 +175,7 @@ $config = json_decode(file_get_contents('config.json'), true);
     // Auto-play (optionnel - défilement automatique toutes les 5 secondes)
     setInterval(() => {
         moveSlide(1);
-    }, 5000);
+    }, 10000);
     </script>
 </body>
 </html>
