@@ -1,3 +1,4 @@
+<?php include "analytics.php"; ?>
 <header>
     <div class="header-container">
         <div class="logo-container">
