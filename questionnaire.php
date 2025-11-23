@@ -184,13 +184,8 @@ $config = json_decode(file_get_contents('config.json'), true);
                     <div class="loading-message" id="loadingMessage">
                         <i class="fas fa-spinner"></i>
                         <p>Chargement du questionnaire...</p>
-                    </div>
-                    <iframe
-                        src="https://vauvert2026.frama.space/apps/forms/s/YtrawnmHocAdx5HEEK89tMGX"
-                        title="Questionnaire Citoyen Vauvert 2026"
-                        allowfullscreen
-                        onload="document.getElementById('loadingMessage').style.display='none'">
-                    </iframe>
+            </div>
+                    <iframe src="https://vauvert2026.frama.space/apps/forms/embed/sYNyoGsQJ4Xi9BML36H5SgNk" width="750" height="900"></iframe>
                 </div>
             </div>
 
