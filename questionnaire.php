@@ -2,6 +2,11 @@
 $page = 'questionnaire';
 $title = 'Questionnaire Citoyen - Pour Vauvert, continuons d\'agir ENSEMBLE';
 $config = json_decode(file_get_contents('config.json'), true);
+
+// Vérifier si le questionnaire est fermé
+$questionnaire_ferme = isset($config['technique']['fermeture_questionnaire'])
+    && $config['technique']['fermeture_questionnaire'] === 'ferme';
+$message_fermeture = $config['technique']['message_fermeture_questionnaire'] ?? 'Le questionnaire est actuellement fermé. Merci de votre intérêt !';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -179,22 +184,34 @@ $config = json_decode(file_get_contents('config.json'), true);
                 </p>
             </div>
 
-            <div class="iframe-container">
-                <div class="iframe-wrapper">
-                    <div class="loading-message" id="loadingMessage">
-                        <i class="fas fa-spinner"></i>
-                        <p>Chargement du questionnaire...</p>
-            </div>
-                    <iframe src="https://vauvert2026.frama.space/apps/forms/embed/sYNyoGsQJ4Xi9BML36H5SgNk" width="750" height="900"></iframe>
+            <?php if ($questionnaire_ferme): ?>
+                <!-- Message de fermeture -->
+                <div style="background: white; padding: 60px 40px; border-radius: 15px; text-align: center; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);">
+                    <i class="fas fa-lock" style="font-size: 4em; color: #FF2E7E; margin-bottom: 30px;"></i>
+                    <h3 style="color: #008AAD; font-size: 2em; margin-bottom: 20px;">Questionnaire fermé</h3>
+                    <p style="font-size: 1.2em; color: #333; line-height: 1.8; max-width: 600px; margin: 0 auto;">
+                        <?php echo nl2br(htmlspecialchars($message_fermeture)); ?>
+                    </p>
                 </div>
-            </div>
+            <?php else: ?>
+                <!-- Questionnaire ouvert -->
+                <div class="iframe-container">
+                    <div class="iframe-wrapper">
+                        <div class="loading-message" id="loadingMessage">
+                            <i class="fas fa-spinner"></i>
+                            <p>Chargement du questionnaire...</p>
+                        </div>
+                        <iframe src="https://vauvert2026.frama.space/apps/forms/embed/sYNyoGsQJ4Xi9BML36H5SgNk" width="750" height="900"></iframe>
+                    </div>
+                </div>
 
-            <div class="alternative-link">
-                <p><i class="fas fa-external-link-alt"></i> Le questionnaire ne s'affiche pas ?</p>
-                <a href="https://vauvert2026.frama.space/apps/forms/s/YtrawnmHocAdx5HEEK89tMGX" target="_blank" rel="noopener">
-                    Ouvrir le questionnaire dans une nouvelle fenêtre
-                </a>
-            </div>
+                <div class="alternative-link">
+                    <p><i class="fas fa-external-link-alt"></i> Le questionnaire ne s'affiche pas ?</p>
+                    <a href="https://vauvert2026.frama.space/apps/forms/s/YtrawnmHocAdx5HEEK89tMGX" target="_blank" rel="noopener">
+                        Ouvrir le questionnaire dans une nouvelle fenêtre
+                    </a>
+                </div>
+            <?php endif; ?>
 
             <div style="background: linear-gradient(135deg, #FFD500 0%, #FFE44D 100%); padding: 40px; border-radius: 15px; text-align: center; margin-top: 60px;">
                 <h3 style="color: #008AAD; margin-bottom: 20px;">
