@@ -103,18 +103,26 @@ $config = json_decode(file_get_contents('config.json'), true);
               <p style="color: #666; font-size: 1.1em; margin-top: 10px;"><?php echo $config['messages']['0_membres_equipe']; ?></p>
             </div>
           <?php else: ?>
-            <?php foreach($config['equipe'] as $membre): ?>
+            <?php foreach($config['equipe'] as $index => $membre): ?>
             <div class="team-member">
-              <img src="<?php echo $membre['photo']; ?>"
-                 alt="<?php echo $membre['prenom'] . ' ' . $membre['nom']; ?>">
-                <div class="team-member-info">
-                  <h4><?php echo $membre['prenom'] . ' ' . $membre['nom']; ?></h4>
-                  <p style="color: #FF2E7E; font-weight: bold;">
-                    <?php echo $membre['delegation']; ?>
-                  </p>
-                  <p><?php echo $membre['description']; ?></p>
-                </div>
+              <div class="team-member-photo">
+                <img src="<?php echo $membre['photo']; ?>"
+                   alt="<?php echo $membre['prenom'] . ' ' . $membre['nom']; ?>">
+                <?php if(!empty($membre['video'])): ?>
+                <button class="video-overlay-btn" onclick="openVideoModal('<?php echo $index; ?>')">
+                  <i class="fas fa-play-circle"></i>
+                  Voir vidéo de présentation
+                </button>
+                <?php endif; ?>
               </div>
+              <div class="team-member-info">
+                <h4><?php echo $membre['prenom'] . ' ' . $membre['nom']; ?></h4>
+                <p style="color: #FF2E7E; font-weight: bold;">
+                  <?php echo $membre['delegation']; ?>
+                </p>
+                <p><?php echo $membre['description']; ?></p>
+              </div>
+            </div>
             <?php endforeach; ?>
           <?php endif; ?>
         </div>
@@ -125,6 +133,71 @@ $config = json_decode(file_get_contents('config.json'), true);
             <a href="contact.php" class="btn">Nous contacter</a>
         </div>
     </section>
+
+    <!-- Modal Vidéo -->
+    <div id="videoModal" class="video-modal">
+        <div class="video-modal-content">
+            <span class="video-modal-close" onclick="closeVideoModal()">&times;</span>
+            <div class="video-container">
+                <iframe id="videoFrame" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const membersVideos = <?php echo json_encode(array_column($config['equipe'], 'video')); ?>;
+
+        function openVideoModal(index) {
+            const modal = document.getElementById('videoModal');
+            const videoFrame = document.getElementById('videoFrame');
+            const videoUrl = membersVideos[index];
+
+            // Support pour YouTube, Vimeo, et vidéos directes
+            let embedUrl = videoUrl;
+
+            // Conversion des URLs YouTube
+            if (videoUrl.includes('youtube.com/watch')) {
+                const videoId = new URL(videoUrl).searchParams.get('v');
+                embedUrl = `https://www.youtube.com/embed/${videoId}`;
+            } else if (videoUrl.includes('youtu.be/')) {
+                const videoId = videoUrl.split('youtu.be/')[1].split('?')[0];
+                embedUrl = `https://www.youtube.com/embed/${videoId}`;
+            }
+            // Conversion des URLs Vimeo
+            else if (videoUrl.includes('vimeo.com/')) {
+                const videoId = videoUrl.split('vimeo.com/')[1].split('?')[0];
+                embedUrl = `https://player.vimeo.com/video/${videoId}`;
+            }
+
+            videoFrame.src = embedUrl;
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeVideoModal() {
+            const modal = document.getElementById('videoModal');
+            const videoFrame = document.getElementById('videoFrame');
+
+            videoFrame.src = '';
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Fermer la modal en cliquant en dehors
+        window.onclick = function(event) {
+            const modal = document.getElementById('videoModal');
+            if (event.target === modal) {
+                closeVideoModal();
+            }
+        }
+
+        // Fermer avec la touche Echap
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeVideoModal();
+            }
+        });
+    </script>
 
     <?php include 'footer.php'; ?>
 </body>

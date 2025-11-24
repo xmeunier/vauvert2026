@@ -1,0 +1,114 @@
+{
+  "site": {
+    "nom": "Pour Vauvert, continuons d'agir ENSEMBLE.",
+    "email": "contact.denat@vauvert2026.fr"
+  },
+  "permanence": {
+    "adresse": "rue Emile Zola, 30600 Vauvert",
+    "horaires": "sur rendez-vous"
+  },
+  "liens": {
+    "questionnaire": "https://www.vauvert2026.fr/questionnaire",
+    "qrcode": "photos/qrcode.png",
+    "facebook": "https://www.facebook.com/profile.php?id=100069363756674&sk=about",
+    "youtube": "",
+    "tiktok": "https://www.tiktok.com/@vauvert2026?_r=1&_t=ZN-91bisvaFlHK"
+  },
+  "candidat": {
+    "nom": "Jean Denat",
+    "fonction": "Maire sortant",
+    "photo": "photos/JeanDenatPhotoLettreCandidature.jpg",
+    "mot_du_candidat": "Ensemble, continuons de faire grandir Vauvert"
+  },
+  "messages": {
+    "0_membres_equipe": "Nous vous présenterons bientôt notre projet, construit avec vous, dans la continuité du travail mené ensemble."
+  },
+  "technique": {
+    "mots_cles": "Vauvert, élections municipales 2026, Jean DENAT, politique locale, Gard, campagne électorale, vivre ensemble, nouveau mandat, camargue, ville",
+    "message_fermeture_questionnaire": "",
+    "fermeture_questionnaire": "ouvert"
+  },
+  "equipe": [
+    {
+      "prenom": "Marie",
+      "nom": "Dupont",
+      "photo": "photos/femme.jpg",
+      "delegation": "Déléguée à la Culture et au Patrimoine",
+      "description": "Passionnée par le patrimoine local et la vie culturelle vauverdoise. Engagée depuis 15 ans dans la préservation de notre histoire.",
+      "video": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    },
+    {
+      "prenom": "Pierre",
+      "nom": "Martin",
+      "photo": "photos/homme.jpg",
+      "delegation": "Délégué aux Sports et à la Jeunesse",
+      "description": "Ancien sportif de haut niveau, je m'engage pour que chaque jeune Vauverdois puisse s'épanouir à travers le sport.",
+      "video": "https://vimeo.com/148751763"
+    },
+    {
+      "prenom": "Sophie",
+      "nom": "Bernard",
+      "photo": "photos/femme.jpg",
+      "delegation": "Déléguée à l'Environnement et au Développement Durable",
+      "description": "Ingénieure en écologie, je porte une vision d'une ville verte et durable pour les générations futures.",
+      "video": ""
+    }
+  ],
+  "actualites": [
+    {
+      "titre": "Candidat",
+      "description": "Campagne municipale 2026",
+      "date": "21/11/2025",
+      "lien": "presentation.php",
+      "photo": "photos/affiche.jpg"
+    },
+    {
+      "titre": "Première réunion publique",
+      "description": "Venez découvrir notre projet pour Vauvert",
+      "date": "15/12/2025",
+      "lien": "reunions.php",
+      "photo": "photos/affiche.jpg"
+    }
+  ],
+  "reunions": [
+    {
+      "titre": "Rencontre citoyenne",
+      "description": "Atelier bilan : une ville qui se transforme :",
+      "date": "Mardi 2 décembre",
+      "heure": "18h30",
+      "lieu": "Salle Mistral, rue Louise Désir",
+      "details": [
+        "Cadre de vie",
+        "Patrimoine",
+        "Mobilité",
+        "Transition écologique."
+      ]
+    },
+    {
+      "titre": "Rencontre citoyenne",
+      "description": "Atelier bilan : une ville qui vous protège :",
+      "date": "Mardi 9 décembre",
+      "heure": "18h30",
+      "lieu": "Salle Mistral, rue Louise Désir",
+      "details": [
+        "Santé",
+        "Solidarité",
+        "Logement pour tous",
+        "Sécurité et tranquilité publique"
+      ]
+    },
+    {
+      "titre": "Rencontre citoyenne",
+      "description": "Atelier bilan : une ville qui bouge pour l'épanouissement de tous :",
+      "date": "Lundi 15 décembre",
+      "heure": "18h30",
+      "lieu": "Salle Mistral, rue Louise Désir",
+      "details": [
+        "Education",
+        "Culture pour tous",
+        "Sports",
+        "Festivités"
+      ]
+    }
+  ]
+}
