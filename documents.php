@@ -142,7 +142,7 @@ $title = (isset($docConfig['titre']) ? $docConfig['titre'] : ucfirst($type)) . '
 
         <div style="background: linear-gradient(135deg, #FFD500 0%, #FFE44D 100%); padding: 40px; border-radius: 15px; text-align: center; margin-top: 60px;">
             <h3 style="color: #008AAD; margin-bottom: 20px;">
-                <?php echo isset($docConfig['cta_titre']) ? htmlspecialchars($docConfig['cta_titre']) : 'Une question ?'; ?>
+                <?php echo isset($docConfig['infos_complementaires']) ? htmlspecialchars($docConfig['infos_complementaires']) : 'Une question ?'; ?>
             </h3>
             <p style="font-size: 1.2em; margin-bottom: 30px;">N'hésitez pas à nous contacter</p>
             <a href="contact.php" class="btn">Nous contacter</a>
