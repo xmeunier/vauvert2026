@@ -19,7 +19,19 @@ foreach($config['ObjectType'] as $index => $membre): $membre["param"]
 
 Dans le google sheet avec un tableau #objectType_document puis une ligne par paramètre que l'on peut retrouver avec un get
 ```php
+#securité
+$documentsAutorises = ['bilan', 'programme', 'statuts', 'projet'];
+
+// Récupération du type de document depuis l'URL
 $type = isset($_GET['type']) ? $_GET['type'] : 'bilan';
+
+// Vérification que le type est autorisé
+if (!in_array($type, $documentsAutorises)) {
+    // Redirection vers la page d'accueil si le type n'est pas autorisé
+    header('Location: index.php');
+    exit;
+}
+
 $configKey = $type . '_document';
 $docConfig = $config[$configKey];
 $docConfig['param'])
