@@ -2,10 +2,29 @@
 
 ## 📄 Mise à jour contenu 
 
-La mise à jour du site se fait via le fichier config.json. Ce fichier est généré par un google sheet et envoyé sur ce repo dans la branche main
-
-
+La mise à jour du site se fait via le fichier config.json. Ce fichier est généré par un google sheet (cf code.gs dans le repertoire tools) et envoyé sur ce repo dans la branche main directement
 Lien vers le google sheet: https://docs.google.com/spreadsheets/d/1xOMqaaWr9BcTrH-tYBC2RJwj8oEGU1gxrU518_QDq20/edit?gid=0#gid=0
+
+Le google sheet propose plusieurs formats recupérables via $config:
+
+Dans le google sheet avec un tableau # object puis une ligne par paramètre
+```php
+$config["object"]["param"]
+```
+
+Dans le google sheet avec un tableau #objectType puis une colonne par paramètre et une ligne par liste d'objet de type ObjectType
+```php
+foreach($config['ObjectType'] as $index => $membre): $membre["param"]
+```
+
+Dans le google sheet avec un tableau #objectType_document puis une ligne par paramètre que l'on peut retrouver avec un get
+```php
+$type = isset($_GET['type']) ? $_GET['type'] : 'bilan';
+$configKey = $type . '_document';
+$docConfig = $config[$configKey];
+$docConfig['param'])
+```
+
 
 ## ⚙️ Mis en production
 
