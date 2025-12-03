@@ -7,17 +7,18 @@ Lien vers le google sheet: https://docs.google.com/spreadsheets/d/1xOMqaaWr9BcTr
 
 Le google sheet propose plusieurs formats recupérables via $config:
 
+#### Objet avec paramètres imbriqués
+
 Dans le google sheet avec un tableau # object puis une ligne par paramètre
+
 ```php
 $config["object"]["param"]
 ```
 
-Dans le google sheet avec un tableau #objectType puis une colonne par paramètre et une ligne par liste d'objet de type ObjectType
-```php
-foreach($config['ObjectType'] as $index => $membre): $membre["param"]
-```
+#### Liste d'objets avec clé de lecture dynamique
 
-Dans le google sheet avec un tableau #objectType_document puis une ligne par paramètre que l'on peut retrouver avec un get
+Dans le google sheet avec un tableau #objet_type puis une ligne par paramètre que l'on peut retrouver avec un get
+  
 ```php
 //securité
 $documentsAutorises = ['bilan', 'programme', 'statuts', 'projet'];
@@ -35,6 +36,13 @@ if (!in_array($type, $documentsAutorises)) {
 $configKey = $type . '_document';
 $docConfig = $config[$configKey];
 $docConfig['param'])
+```
+#### Collection d'objets
+
+Dans le google sheet avec un tableau #object puis une liste d'objets avec une colonne par paramètre
+
+```php
+foreach($config['ObjectType'] as $index => $membre): $membre["param"]
 ```
 
 
