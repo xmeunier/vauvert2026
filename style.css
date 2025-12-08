@@ -285,6 +285,32 @@ h3 {
     margin-bottom: 15px;
 }
 
+/* Past events styling */
+.event-card.event-past {
+    opacity: 0.6;
+    filter: grayscale(50%);
+    position: relative;
+}
+
+.event-card.event-past h3,
+.event-card.event-past .event-date,
+.event-card.event-past .event-location,
+.event-card.event-past p,
+.event-card.event-past li {
+    color: #888;
+}
+
+.event-past-badge {
+    display: inline-block;
+    background: #888;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
 .questionnaire-section {
     background: linear-gradient(135deg, var(--turquoise) 0%, var(--turquoise-light) 100%);
     padding: 40px;
