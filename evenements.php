@@ -30,8 +30,8 @@ $config = json_decode(file_get_contents('config.json'), true);
         $dateStr = $reunion['date'];
         $isPast = false;
 
-        // Extrait les informations de date
-        if (preg_match('/(\d{1,2})\s+(\w+)/i', $dateStr, $matches)) {
+        // Extrait les informations de date (ignore le jour de la semaine si présent)
+        if (preg_match('/(?:lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche)?\s*(\d{1,2})\s+(\w+)/i', $dateStr, $matches)) {
             $jour = $matches[1];
             $moisFr = strtolower($matches[2]);
 
