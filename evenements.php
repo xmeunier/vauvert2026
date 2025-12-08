@@ -28,6 +28,7 @@ $config = json_decode(file_get_contents('config.json'), true);
     foreach($config['reunions'] as $reunion):
         // Parse la date française et vérifie si l'événement est passé
         $dateStr = $reunion['date'];
+        $heureStr = $reunion['heure'] ?? '';
         $isPast = false;
 
         // Extrait les informations de date (ignore le jour de la semaine si présent)
@@ -51,7 +52,15 @@ $config = json_decode(file_get_contents('config.json'), true);
                     $annee++;
                 }
 
-                $dateEvent = strtotime("$annee-$mois-$jour 23:59:59");
+                // Extrait l'heure si disponible (format: 18h30, 18h, etc.)
+                $heure = 23;
+                $minute = 59;
+                if (!empty($heureStr) && preg_match('/(\d{1,2})h(\d{2})?/i', $heureStr, $heureMatches)) {
+                    $heure = (int)$heureMatches[1];
+                    $minute = isset($heureMatches[2]) ? (int)$heureMatches[2] : 0;
+                }
+
+                $dateEvent = strtotime("$annee-$mois-$jour $heure:$minute:00");
                 $isPast = $dateEvent < time();
             }
         }
