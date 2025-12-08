@@ -47,11 +47,6 @@ $config = json_decode(file_get_contents('config.json'), true);
                 $mois = $moisMap[$moisFr];
                 $annee = date('Y');
 
-                // Si le mois est plus petit que le mois actuel, on suppose l'année suivante
-                if ($mois < date('n')) {
-                    $annee++;
-                }
-
                 // Extrait l'heure si disponible (format: 18h30, 18h, etc.)
                 $heure = 23;
                 $minute = 59;
@@ -60,8 +55,15 @@ $config = json_decode(file_get_contents('config.json'), true);
                     $minute = isset($heureMatches[2]) ? (int)$heureMatches[2] : 0;
                 }
 
+                // Crée la date de l'événement
                 $dateEvent = strtotime("$annee-$mois-$jour $heure:$minute:00");
-                $isPast = $dateEvent < time();
+
+                // Si la date est dans le passé, c'est peut-être pour l'année prochaine
+                if ($dateEvent < time()) {
+                    $isPast = true;
+                } else {
+                    $isPast = false;
+                }
             }
         }
 
