@@ -24,15 +24,48 @@ $config = json_decode(file_get_contents('config.json'), true);
         </p>
 
         <div class="events-grid">
-    <?php foreach($config['reunions'] as $reunion): ?>
-    <div class="event-card">
+    <?php
+    foreach($config['reunions'] as $reunion):
+        // Parse la date française et vérifie si l'événement est passé
+        $dateStr = $reunion['date'];
+        $isPast = false;
+
+        // Extrait les informations de date
+        if (preg_match('/(\d{1,2})\s+(\w+)/i', $dateStr, $matches)) {
+            $jour = $matches[1];
+            $moisFr = strtolower($matches[2]);
+
+            // Conversion mois français en numéro
+            $moisMap = [
+                'janvier' => 1, 'février' => 2, 'mars' => 3, 'avril' => 4,
+                'mai' => 5, 'juin' => 6, 'juillet' => 7, 'août' => 8,
+                'septembre' => 9, 'octobre' => 10, 'novembre' => 11, 'décembre' => 12
+            ];
+
+            if (isset($moisMap[$moisFr])) {
+                $mois = $moisMap[$moisFr];
+                $annee = date('Y');
+
+                // Si le mois est plus petit que le mois actuel, on suppose l'année suivante
+                if ($mois < date('n')) {
+                    $annee++;
+                }
+
+                $dateEvent = strtotime("$annee-$mois-$jour 23:59:59");
+                $isPast = $dateEvent < time();
+            }
+        }
+
+        $cardClass = $isPast ? 'event-card event-past' : 'event-card';
+    ?>
+    <div class="<?php echo $cardClass; ?>">
         <h3><i class="fas fa-calendar-alt"></i> <?php echo $reunion['titre']; ?></h3>
         <p class="event-date">
-            <i class="fas fa-clock"></i> 
+            <i class="fas fa-clock"></i>
             <?php echo $reunion['date'] . ' à ' . $reunion['heure']; ?>
         </p>
         <p class="event-location">
-            <i class="fas fa-map-marker-alt"></i> 
+            <i class="fas fa-map-marker-alt"></i>
             <?php echo $reunion['lieu']; ?>
         </p>
         <p><?php echo $reunion['description']; ?></p>
@@ -41,6 +74,11 @@ $config = json_decode(file_get_contents('config.json'), true);
             <li><?php echo $detail; ?></li>
             <?php endforeach; ?>
         </ul>
+        <?php if ($isPast): ?>
+        <div class="event-past-badge">
+            <i class="fas fa-check-circle"></i> Événement terminé
+        </div>
+        <?php endif; ?>
     </div>
     <?php endforeach; ?>
       </div>
