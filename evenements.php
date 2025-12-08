@@ -31,10 +31,16 @@ $config = json_decode(file_get_contents('config.json'), true);
         $heureStr = $reunion['heure'] ?? '';
         $isPast = false;
 
+        // Debug - à supprimer après test
+        echo "<!-- Date: $dateStr | Heure: $heureStr -->";
+
         // Extrait les informations de date (ignore le jour de la semaine si présent)
         if (preg_match('/(?:lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche)?\s*(\d{1,2})\s+(\w+)/i', $dateStr, $matches)) {
             $jour = $matches[1];
             $moisFr = strtolower($matches[2]);
+
+            // Debug
+            echo "<!-- Jour: $jour | Mois: $moisFr -->";
 
             // Conversion mois français en numéro
             $moisMap = [
@@ -57,6 +63,10 @@ $config = json_decode(file_get_contents('config.json'), true);
 
                 // Crée la date de l'événement
                 $dateEvent = strtotime("$annee-$mois-$jour $heure:$minute:00");
+                $now = time();
+
+                // Debug
+                echo "<!-- DateEvent: " . date('Y-m-d H:i:s', $dateEvent) . " | Now: " . date('Y-m-d H:i:s', $now) . " | isPast: " . ($dateEvent < $now ? 'OUI' : 'NON') . " -->";
 
                 // Si la date est dans le passé, c'est peut-être pour l'année prochaine
                 if ($dateEvent < time()) {
