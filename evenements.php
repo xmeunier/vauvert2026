@@ -35,12 +35,13 @@ $config = json_decode(file_get_contents('config.json'), true);
         echo "<!-- Date: $dateStr | Heure: $heureStr -->";
 
         // Extrait les informations de date (ignore le jour de la semaine si présent)
-        if (preg_match('/(?:lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche)?\s*(\d{1,2})\s+([a-zàâäéèêëïîôùûüÿæœç]+)/iu', $dateStr, $matches)) {
+        if (preg_match('/(?:lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche)?\s*(\d{1,2})\s+([a-zàâäéèêëïîôùûüÿæœç]+)(?:\s+(\d{4}))?/iu', $dateStr, $matches)) {
             $jour = $matches[1];
             $moisFr = strtolower($matches[2]);
+            $anneeCapturee = isset($matches[3]) ? $matches[3] : null;
 
             // Debug
-            echo "<!-- Jour: $jour | Mois: $moisFr -->";
+            echo "<!-- Jour: $jour | Mois: $moisFr | Année: " . ($anneeCapturee ?? 'non spécifiée') . " -->";
 
             // Conversion mois français en numéro
             $moisMap = [
@@ -51,7 +52,8 @@ $config = json_decode(file_get_contents('config.json'), true);
 
             if (isset($moisMap[$moisFr])) {
                 $mois = $moisMap[$moisFr];
-                $annee = date('Y');
+                // Utilise l'année capturée si disponible, sinon l'année courante
+                $annee = $anneeCapturee ?? date('Y');
 
                 // Extrait l'heure si disponible (format: 18h30, 18h, etc.)
                 $heure = 23;
