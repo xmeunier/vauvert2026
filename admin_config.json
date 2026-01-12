@@ -3,15 +3,53 @@
     "username": "admin",
     "password_hash": "$2y$10$hz/V0abUrBu1lfr5XfrAL.R11p3beYnHTx85651QTCnnMcEe75xhK"
   },
-  "upload": {
-    "allowed_extensions": [
-      "jpg",
-      "jpeg",
-      "png",
-      "gif",
-      "webp"
-    ],
-    "max_file_size": 5242880,
-    "upload_directory": "photos"
+  "upload_types": {
+    "photos": {
+      "allowed_extensions": [
+        "jpg",
+        "jpeg",
+        "png",
+        "gif",
+        "webp"
+      ],
+      "max_file_size": 5242880,
+      "upload_directory": "photos",
+      "mime_types": [
+        "image/jpeg",
+        "image/jpg",
+        "image/png",
+        "image/gif",
+        "image/webp"
+      ],
+      "validation_type": "image"
+    },
+    "videos": {
+      "allowed_extensions": [
+        "mp4",
+        "webm",
+        "mov",
+        "avi"
+      ],
+      "max_file_size": 104857600,
+      "upload_directory": "videos",
+      "mime_types": [
+        "video/mp4",
+        "video/webm",
+        "video/quicktime",
+        "video/x-msvideo"
+      ],
+      "validation_type": "video"
+    },
+    "documents": {
+      "allowed_extensions": [
+        "pdf"
+      ],
+      "max_file_size": 10485760,
+      "upload_directory": "documents",
+      "mime_types": [
+        "application/pdf"
+      ],
+      "validation_type": "pdf"
+    }
   }
 }
