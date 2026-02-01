@@ -298,6 +298,7 @@ if (isset($_GET['logout'])) {
 
         .file-name {
             font-weight: 600;
+            font-size: 16px;
             color: #333;
             margin-bottom: 8px;
             word-break: break-all;

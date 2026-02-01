@@ -17,8 +17,8 @@ $config = json_decode(file_get_contents('config.json'), true);
     <?php include 'header.php'; ?>
 
     <section class="container">
-        <h2>Le Candidat</h2>
-        
+        <h2 id="candidat">Le Candidat</h2>
+
         <div class="team-grid" style="max-width: 800px; margin: 40px auto;">
             <div class="team-member">
                 <img src="<?php echo $config['candidat']['photo']; ?>" alt="Jean DENAT">
@@ -31,7 +31,7 @@ $config = json_decode(file_get_contents('config.json'), true);
             </div>
         </div>
 
-        <div style="max-width: 900px; margin: 60px auto; padding: 40px; background: white; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+        <div id="lettre" style="max-width: 900px; margin: 60px auto; padding: 40px; background: white; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
             <h3 style="color: #008AAD; margin-bottom: 30px; text-align: center;">Lettre du candidat</h3>
 
             <div style="line-height: 1.8; color: #333;">
@@ -90,7 +90,7 @@ $config = json_decode(file_get_contents('config.json'), true);
             </div>
         </div>
 
-        <h2 style="margin-top: 80px;">L'Équipe</h2>
+        <h2 id="equipe" style="margin-top: 80px;">L'Équipe</h2>
         <p style="text-align: center; font-size: 1.2em; color: #008AAD; margin-bottom: 40px;">
             Une équipe engagée et proche des citoyens
         </p>
