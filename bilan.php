@@ -1,28 +1,10 @@
 <?php
 $page = 'bilan';
 $title = 'Bilan - Pour Vauvert, continuons d\'agir ENSEMBLE';
+$config = json_decode(file_get_contents('config.json'), true);
 
-// Liste des vidéos du bilan
-$videosBilan = [
-    [
-        'titre' => 'Bilan du mandat 2020-2026',
-        'description' => 'Retour sur les réalisations majeures de notre mandat',
-        'thumbnail' => 'images/video-bilan-1.jpg',
-        'video' => 'https://www.youtube.com/watch?v=XXXXX'
-    ],
-    [
-        'titre' => 'Les projets réalisés',
-        'description' => 'Découvrez les projets qui ont transformé Vauvert',
-        'thumbnail' => 'images/video-bilan-2.jpg',
-        'video' => 'https://www.youtube.com/watch?v=XXXXX'
-    ],
-    [
-        'titre' => 'La parole aux habitants',
-        'description' => 'Les Vauverdois témoignent',
-        'thumbnail' => 'images/video-bilan-3.jpg',
-        'video' => 'https://www.youtube.com/watch?v=XXXXX'
-    ]
-];
+// Liste des vidéos du bilan depuis la config
+$videosBilan = isset($config['bilan']) ? $config['bilan'] : [];
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -64,23 +46,22 @@ $videosBilan = [
 
         .citation-block::after {
             content: '"';
-            bottom: -30px;
+            bottom: 0;
             right: 0;
         }
 
         .citation-text {
-            color: #009B4D;
-            font-size: 1.6em;
-            font-style: italic;
-            line-height: 1.6;
-            font-weight: 500;
+            color: #5DD9C1;
+            font-size: 1.8em;
+            line-height: 1.4;
+            font-weight: 600;
         }
 
         .citation-suite {
             color: #FF2E7E;
-            font-size: 2em;
-            font-weight: bold;
-            margin-top: 30px;
+            font-size: 1.8em;
+            font-weight: 600;
+            margin-top: 10px;
         }
 
         /* PDF section */
@@ -252,8 +233,8 @@ $videosBilan = [
         <div class="citation-section">
             <div class="citation-block">
                 <p class="citation-text">Ce mandat a été guidé par une exigence simple : être utile aux habitants, à la ville, à l'avenir.</p>
+                <p class="citation-suite">La suite s'écrit avec vous.</p>
             </div>
-            <p class="citation-suite">La suite s'écrit avec vous</p>
         </div>
 
         <!-- PDF Bilan -->
@@ -291,8 +272,8 @@ $videosBilan = [
                 <?php foreach($videosBilan as $index => $video): ?>
                 <div class="video-card" onclick="openVideoModal(<?php echo $index; ?>)">
                     <div class="video-thumbnail">
-                        <?php if(!empty($video['thumbnail']) && file_exists($video['thumbnail'])): ?>
-                            <img src="<?php echo htmlspecialchars($video['thumbnail']); ?>" alt="<?php echo htmlspecialchars($video['titre']); ?>">
+                        <?php if(!empty($video['photo']) && file_exists($video['photo'])): ?>
+                            <img src="<?php echo htmlspecialchars($video['photo']); ?>" alt="<?php echo htmlspecialchars($video['titre']); ?>">
                         <?php endif; ?>
                         <div class="video-play-btn">
                             <i class="fas fa-play"></i>
