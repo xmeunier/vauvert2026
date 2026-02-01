@@ -240,8 +240,8 @@ $videosBilan = isset($config['bilan']) ? $config['bilan'] : [];
         <!-- PDF Bilan -->
         <div class="pdf-container">
             <div class="pdf-header">
-                <h2>Notre Bilan</h2>
-                <p>Découvrez le bilan complet de notre action pour Vauvert</p>
+                <h2><?php echo htmlspecialchars($config['bilan_document']['titre']); ?></h2>
+                <p><?php echo htmlspecialchars($config['bilan_document']['descriptif']); ?></p>
             </div>
 
 <?php if(!empty($config['bilan_document']['lien_pdf'])): ?>
