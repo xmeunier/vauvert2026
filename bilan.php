@@ -244,29 +244,36 @@ $videosBilan = isset($config['bilan']) ? $config['bilan'] : [];
                 <p>Découvrez le bilan complet de notre action pour Vauvert</p>
             </div>
 
+<?php if(!empty($config['bilan_document']['lien_pdf'])): ?>
             <iframe
-                src="documents/A5 - BILAN JEAN DENAT 16 PAGES - V4.pdf#toolbar=1&navpanes=1&scrollbar=1"
+                src="<?php echo htmlspecialchars($config['bilan_document']['lien_pdf']); ?>#toolbar=1&navpanes=1&scrollbar=1"
                 class="pdf-viewer"
                 type="application/pdf"
                 title="Bilan Jean Denat">
             </iframe>
 
             <div style="text-align: center;">
-                <a href="documents/A5 - BILAN JEAN DENAT 16 PAGES - V4.pdf"
+                <a href="<?php echo htmlspecialchars($config['bilan_document']['lien_pdf']); ?>"
                    download
                    class="download-btn">
                     <i class="fas fa-download"></i>
                     Télécharger le bilan PDF
                 </a>
             </div>
+            <?php else: ?>
+            <div style="text-align: center; padding: 60px 20px;">
+                <i class="fas fa-file-pdf" style="font-size: 4em; color: #008AAD; margin-bottom: 20px;"></i>
+                <h3 style="color: #008AAD; font-size: 1.8em;">Document à venir</h3>
+                <p style="color: #666; font-size: 1.1em; margin-top: 10px;">
+                    <?php echo isset($config['bilan_document']['message_attente']) ? htmlspecialchars($config['bilan_document']['message_attente']) : 'Le bilan sera bientôt disponible.'; ?>
+                </p>
+            </div>
+            <?php endif; ?>
         </div>
 
         <!-- Vidéos -->
         <div class="videos-section">
-            <h2>Vidéos du Bilan</h2>
-            <p style="text-align: center; font-size: 1.2em; color: #008AAD; margin-bottom: 20px;">
-                Découvrez notre bilan en images
-            </p>
+            <h2>La Minute Bilan !</h2>
 
             <div class="videos-grid">
                 <?php foreach($videosBilan as $index => $video): ?>
