@@ -275,6 +275,7 @@ $videosBilan = isset($config['bilan']) ? $config['bilan'] : [];
         <div class="videos-section">
             <h2>La Minute Bilan !</h2>
 
+            <?php if(!empty($videosBilan)): ?>
             <div class="videos-grid">
                 <?php foreach($videosBilan as $index => $video): ?>
                 <div class="video-card" onclick="openVideoModal(<?php echo $index; ?>)">
@@ -293,6 +294,14 @@ $videosBilan = isset($config['bilan']) ? $config['bilan'] : [];
                 </div>
                 <?php endforeach; ?>
             </div>
+            <?php else: ?>
+            <div style="text-align: center; padding: 60px 20px;">
+                <i class="fas fa-video" style="font-size: 4em; color: #008AAD; margin-bottom: 20px;"></i>
+                <p style="color: #666; font-size: 1.1em; margin-top: 10px;">
+                    <?php echo isset($config['bilan_document']['message_attente']) ? htmlspecialchars($config['bilan_document']['message_attente']) : 'Vidéos à venir...'; ?>
+                </p>
+            </div>
+            <?php endif; ?>
         </div>
 
         <div style="background: linear-gradient(135deg, #FFD500 0%, #FFE44D 100%); padding: 40px; border-radius: 15px; text-align: center; margin-top: 60px;">
