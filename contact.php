@@ -107,7 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 <div class="form-group">
                     <label for="message"><i class="fas fa-comment"></i> Votre message *</label>
-                    <textarea id="message" name="message" required placeholder="Parlez-nous de votre motivation, de vos compétences, de vos idées pour Vauvert..."></textarea>
+                    <textarea id="message" name="message" required placeholder="Parlez-nous de votre motivation, de vos compétences, de vos idées pour Vauvert..."><?php echo htmlspecialchars($_GET['message'] ?? ''); ?></textarea>
                 </div>
 
                 <div class="form-group" style="text-align: center;">

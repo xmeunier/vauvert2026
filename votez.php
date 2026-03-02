@@ -119,9 +119,12 @@ $config = json_decode(file_get_contents('config.json'), true);
             <p style="text-align: center; font-size: 1.2em; margin-bottom: 30px;">
                 Pensez à faire une procuration ! C'est simple et rapide.
             </p>
-            <div style="text-align: center;">
+            <div style="text-align: center; display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
                 <a href="https://www.maprocuration.gouv.fr/" class="btn" style="background-color: #008AAD;" target="_blank">
                     <i class="fas fa-external-link-alt"></i> Faire une procuration en ligne
+                </a>
+                <a href="contact.php?message=Je+cherche+de+l%27aide+pour+ma+procuration%2C+pouvez-vous+me+recontacter+s%27il+vous+plait" class="btn" style="background-color: #FF2E7E;">
+                    <i class="fas fa-hands-helping"></i> Je cherche de l'aide pour ma procuration
                 </a>
             </div>
         </div>
