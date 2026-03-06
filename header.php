@@ -15,6 +15,7 @@
                 <li><a href="index.php" class="<?php echo ($page == 'accueil') ? 'active' : ''; ?>">Accueil</a></li>
                 <li><a href="presentation.php" class="<?php echo ($page == 'presentation') ? 'active' : ''; ?>">Présentation</a></li>
                 <li><a href="bilan.php" class="<?php echo ($page == 'bilan') ? 'active' : ''; ?>">Bilan</a></li>
+                <li><a href="documents.php?type=programme" class="<?php echo ($page == 'documents' && isset($_GET['type']) && $_GET['type'] == 'programme') ? 'active' : ''; ?>">Notre projet</a></li>
                 <li><a href="evenements.php" class="<?php echo ($page == 'evenements') ? 'active' : ''; ?>">Événements</a></li>
                 <li><a href="contact.php" class="<?php echo ($page == 'contact') ? 'active' : ''; ?>">Contact</a></li>
                 <li><a href="votez.php" class="<?php echo ($page == 'votez') ? 'active' : ''; ?>">Votez pour gagner</a></li>
