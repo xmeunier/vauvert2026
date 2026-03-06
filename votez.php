@@ -18,31 +18,6 @@ $config = json_decode(file_get_contents('config.json'), true);
 
     <section class="container">
         <h2><i class="fas fa-vote-yea"></i> Votez pour gagner</h2>
-        
-        <div class="vote-section">
-            <div style="font-size: 1.3em; margin-bottom: 30px;">
-                <p style="margin-bottom: 20px;">
-                    <i class="fas fa-check-circle" style="color: #008AAD;"></i> 
-                    Vous êtes citoyen français ou européen ?
-                </p>
-                <p style="margin-bottom: 20px;">
-                    <i class="fas fa-check-circle" style="color: #008AAD;"></i> 
-                    Vous avez plus de 18 ans ?
-                </p>
-            </div>
-            
-            <h3 style="color: #008AAD; font-size: 2em; margin-bottom: 30px;">
-                Votre voix compte !
-            </h3>
-            
-            <p class="important" style="font-size: 1.4em; margin-bottom: 30px;">
-                Pensez à vous inscrire (ou à vérifier votre bonne inscription) sur les listes électorales avant le 6 février 2026.
-            </p>
-            
-            <a href="https://www.service-public.fr/particuliers/vosdroits/R16396" class="btn" target="_blank" style="font-size: 1.3em; padding: 20px 50px;">
-                <i class="fas fa-edit"></i> Lien pour s'inscrire
-            </a>
-        </div>
 
         <!-- Informations complémentaires -->
         <div style="margin-top: 60px;">
@@ -127,6 +102,31 @@ $config = json_decode(file_get_contents('config.json'), true);
                     <i class="fas fa-hands-helping"></i> Je cherche de l'aide pour ma procuration
                 </a>
             </div>
+        </div>
+
+        <div class="vote-section" style="margin-top: 60px;">
+            <div style="font-size: 1.3em; margin-bottom: 30px;">
+                <p style="margin-bottom: 20px;">
+                    <i class="fas fa-check-circle" style="color: #008AAD;"></i>
+                    Vous êtes citoyen français ou européen ?
+                </p>
+                <p style="margin-bottom: 20px;">
+                    <i class="fas fa-check-circle" style="color: #008AAD;"></i>
+                    Vous avez plus de 18 ans ?
+                </p>
+            </div>
+
+            <h3 style="color: #008AAD; font-size: 2em; margin-bottom: 30px;">
+                Votre voix compte !
+            </h3>
+
+            <p class="important" style="font-size: 1.4em; margin-bottom: 30px;">
+                Pensez à vous inscrire (ou à vérifier votre bonne inscription) sur les listes électorales avant le 6 février 2026.
+            </p>
+
+            <a href="https://www.service-public.fr/particuliers/vosdroits/R16396" class="btn" target="_blank" style="font-size: 1.3em; padding: 20px 50px;">
+                <i class="fas fa-edit"></i> Lien pour s'inscrire
+            </a>
         </div>
     </section>
 
