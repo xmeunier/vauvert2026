@@ -99,8 +99,8 @@ header {
 nav ul {
     list-style: none;
     display: flex;
-    gap: 30px;
-    flex-wrap: wrap;
+    gap: 10px;
+    flex-wrap: nowrap;
 }
 
 nav ul li a {
@@ -108,8 +108,9 @@ nav ul li a {
     text-decoration: none;
     font-weight: 500;
     transition: all 0.3s ease;
-    padding: 8px 15px;
+    padding: 8px 10px;
     border-radius: 5px;
+    white-space: nowrap;
 }
 
 nav ul li a:hover,
